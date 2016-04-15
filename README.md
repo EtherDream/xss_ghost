@@ -4,11 +4,11 @@ XSS Ghost
 
 用法：
 
-```
+```html
 <script src="xss_ghost.js"></script>
 <script>
     XssGhost.init({
-      id: 'test-1',   // 相同 id 的 padyload 不会重复运行
+      id: 'test-1',   // 相同 id 的 payload 不会重复运行
       payload: function() {
       	console.log('xss run');
       }
