@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+	<title>main</title>
+	<meta charset="utf-8" />
+</head>
+<body>
+	<a href="http://127.0.0.2:8080/popup_test/cross.html" target="_blank">Cross Page</a>
+
+	<button id="btn">Open</button>
+	<script>
+		function payload() {
+			window.addEventListener('unload', function() {
+				//alert('DOMContentLoaded\n' + document.documentElement.outerHTML);
+				opener.postMessage('die', '*');
+			});
+		}
+
+
+		btn.onclick = function() {
+			var win = window.open('open.html');
+			win.eval('(' + payload + ')()');
+		};
+
+		window.onmessage = function(e) {
+			alert(e.data);
+		}
+	</script>
+</body>
+</html>

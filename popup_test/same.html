@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+	<title>main</title>
+	<meta charset="utf-8" />
+	<title>same</title>
+</head>
+<body>
+	<button id="btn">opener</button>
+	<button id="btn2">opener's opener</button>
+	<script>
+		btn.onclick = function() {
+			try {
+				alert(opener.location.href);
+			} catch(e) {
+				alert(e);
+			}
+		};
+
+		btn2.onclick = function() {
+			try {
+				alert(opener.opener.location.href);
+			} catch(e) {
+				alert(e);
+			}
+		};
+	</script>
+</body>
+</html>

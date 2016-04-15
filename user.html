@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+	<title>新页面测试</title>
+	<meta charset="utf-8" />
+	<style>
+		fieldset {
+			margin-bottom: 20px;
+		}
+		form > div {
+			padding-top: 5px;
+		}
+	</style>
+</head>
+<body>
+	<h2>该页面本没有 XSS</h2>
+
+	<fieldset>
+		<legend>弹窗测试</legend>
+		<button id="btnPopup">弹窗</button>
+		<script>
+			btnPopup.onclick = function() {
+				open('detail_3.html');
+			};
+		</script>
+	</fieldset>
+
+	<fieldset>
+		<legend>表单测试</legend>
+		<form action="cgi.html" method="get" enctype="multipart/form-data">
+			<div>
+				帐号:
+				<input type="text" name="user" value="jack">
+			</div>
+			<div>
+				密码:
+				<input type="password" name="pwd" value="123456">
+			</div>
+			<div>
+				性别:
+				<label for="sex-male">男</label>
+				<input type="radio" id="sex-male" name="sex" value="male" checked>
+				<label for="sex-female">女</label>
+				<input type="radio" id="sex-female" name="sex" value="female">
+			</div>
+			<div>
+				选区:
+				<select name="zone">
+					<option>TEST 1</option>
+					<option>TEST 2</option>
+					<option>TEST 3</option>
+				</select>
+			</div>
+			<div>
+				简介:
+				<textarea name="desc" placeholder="写点什么吧"></textarea>
+			</div>
+			<div>
+				头像:
+				<input type="file" name="avatar">
+			</div>
+			<div>
+				<input type="checkbox" name="accept" id="accept">
+				<label for="accept">同意</label>
+			</div>
+			<div>
+				<input type="submit">
+				<input type="reset">
+			</div>
+		</form>
+	</fieldset>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+<head>
+	<title>main</title>
+	<meta charset="utf-8" />
+	<title>cross</title>
+</head>
+<body>
+	<a href="http://127.0.0.1:8080/popup_test/same.html" target="_blank">Same Page</a>
+
+	<button id="btn">opener</button>
+	<script>
+		btn.onclick = function() {
+			try {
+				alert(opener.location.href);
+			} catch(e) {
+				alert(e);
+			}
+		};
+	</script>
+</body>
+</html>

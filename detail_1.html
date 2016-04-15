@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+  <title>帖子1</title>
+  <meta charset="utf-8" />
+</head>
+<body>
+  帖子1（本页含有 XSS！）
+  <p><a href="user.html">新页面测试</a></p>
+  <p><a href="http://cross.etherdream.com/FunnyScript/XssGhost/cross_site.html">跨站页面</a></p>
+
+  <script src="xss_ghost.js"></script>
+  <script>
+    // test
+    XssGhost.init({
+      id: 'test1',
+      payload: function() {
+        //console.warn('xss run');
+
+        function show() {
+          var div = document.createElement('div');
+          div.innerHTML = 'xss running...';
+          div.style.cssText = 'position:fixed; top:0; right:0; color:red; background:#000; font-size:40px; line-height:40px; z-index:999999';      
+          document.body.appendChild(div);
+        }
+
+        if (document.body) {
+          show();
+        } else {
+          window.addEventListener('DOMContentLoaded', show);
+        }
+      }
+    });
+  </script>
+</body>
+</html>
